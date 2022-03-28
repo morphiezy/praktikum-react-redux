@@ -1,0 +1,80 @@
+.todo_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo_input {
+    width: 450px;
+    height: 55px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    background-color: #13125B;
+    color: #FFFFFF;
+    padding: 0 30px;
+    font-family: var(--font);
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.todo_input:focus {
+    background-color: #9E66FA;
+    -webkit-animation: glitch 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation: glitch 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+/* Placeholder input */
+
+.todo_input::placeholder {
+    color: #FFFFFF;
+}
+
+
+/* Add button  */
+
+
+.btn_add {
+    display: none;
+}
+
+.toggle_add {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #9E66FA;
+    color: #FFFFFF;
+    border: none;
+    font-size: 20px;
+    font-family: var(--font);
+    cursor: pointer;
+}
+
+
+
+
+@media screen and (max-width:800px) {
+    
+    .todo_input {
+      width: 80%;
+    }
+
+  }
+  
+  
+  
+  @media screen and (max-width:576px) {
+  
+    .todo_input {
+      height: 50px;
+      font-size: 0.9rem;
+    }
+  
+    .toggle_add {
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+    }
+  
+  }
