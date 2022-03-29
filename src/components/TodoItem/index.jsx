@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { completeTodo, deleteTodo } from '../../store/todoSlice';
 import style from './style.module.css'
 
@@ -15,11 +15,14 @@ const {
 } = style;
 
 
-const TodoItem = ({id,name,create,completeTodo,deleteTodo})=>{
+const TodoItem = ({id,name,create})=>{
+
+    const dispatch = useDispatch();
+
     return(
         <div className={todo_item}>
             <label className={wrapper}>
-                <input type="checkbox" onChange={()=>completeTodo(id)} className={toggle_complete}/>
+                <input type="checkbox" onChange={()=>dispatch(completeTodo(id))} className={toggle_complete}/>
                 <span className={toggle_checkbox}></span>
                 <div className={todo_info}>
                     <span className={title} title={name}>
@@ -29,21 +32,11 @@ const TodoItem = ({id,name,create,completeTodo,deleteTodo})=>{
                 </div>
             </label>
             <div className={todo_tools}>
-                <button className={btn_delete} onClick={()=>deleteTodo(id)}>delete</button>
+                <button className={btn_delete} onClick={()=>dispatch(deleteTodo(id))}>delete</button>
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (_,ownProps)=>{
-    return({...ownProps})
-}
 
-const mapDispatchToProps = (dispatch)=>{
-    return{
-        deleteTodo: (id)=> dispatch(deleteTodo(id)),
-        completeTodo : (id)=> dispatch(completeTodo(id))
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(TodoItem)
+export default TodoItem

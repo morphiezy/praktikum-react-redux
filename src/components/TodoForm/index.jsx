@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createTodo } from "../../store/todoSlice";
 
 import style from "./style.module.css";
 
 const { todo_header, todo_input, btn_add, toggle_add } = style;
 
-const TodoForm = ({ createTodo }) => {
+const TodoForm = () => {
+  
   const [inputValue, setValue] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ const TodoForm = ({ createTodo }) => {
       return false;
     }
 
-    createTodo(value);
+    dispatch(createTodo(value));
     return setValue("");
   };
 
@@ -42,10 +44,5 @@ const TodoForm = ({ createTodo }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createTodo: (value) => dispatch(createTodo(value)),
-  };
-};
 
-export default connect(null, mapDispatchToProps)(TodoForm);
+export default TodoForm;

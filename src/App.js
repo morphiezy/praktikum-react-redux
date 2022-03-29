@@ -1,11 +1,14 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './App.css';
 import TodoItem from './components/TodoItem'
 import TodoForm from './components/TodoForm';
 
 
 
-const App = ({todoList})=> {
+const App = ()=> {
+
+    const todos = useSelector(state => state.todo)
+
     return (
         <div className="App">
         <h1 className="brand-link">
@@ -16,7 +19,7 @@ const App = ({todoList})=> {
             <TodoForm/>
             <div className="todo-list">
                 {
-                    todoList.map(todo => <TodoItem 
+                    todos.map(todo => <TodoItem 
                                             key={todo.id} 
                                             id={todo.id} 
                                             name={todo.name} 
@@ -31,6 +34,5 @@ const App = ({todoList})=> {
 }
 
 
-const mapStateToProps = (state)=> ({todoList:state.todo})
 
-export default connect(mapStateToProps)(App);
+export default App;
