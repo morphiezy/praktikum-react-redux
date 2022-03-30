@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { completeTodo, deleteTodo } from '../../store/todoSlice';
+import { completeTodo, deleteTodo } from '../../store/Todo/todoSlice';
 import style from './style.module.css'
 
 const {

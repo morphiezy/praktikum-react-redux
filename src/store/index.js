@@ -10,7 +10,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import { configureStore,combineReducers } from "@reduxjs/toolkit";
-import { reducer as todoReducer } from "./todoSlice";
+import { reducer as todoReducer } from "./Todo/todoSlice";
 
 
 const persistConfig = {
